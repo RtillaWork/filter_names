@@ -33,5 +33,7 @@ int main() {
         std::cout << name << std::endl;
     }
 
+    std::cout << "Entries count: " << names.size() << std::endl;
+
     return 0;
 }
