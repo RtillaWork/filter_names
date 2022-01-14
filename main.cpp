@@ -9,7 +9,7 @@ int main() {
 
     const std::string DELIM_BEFORE{"\n"};
     const std::string DELIM_AFTER{"Civil War (Union)"};
-    const std::string INPUT_FILE{"/home/n/Public/input_converted_file.txt"};
+    const std::string INPUT_FILE{"./input_converted_file.txt"};
 
     std::ifstream infile(INPUT_FILE);
 
