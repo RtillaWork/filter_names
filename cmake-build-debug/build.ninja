@@ -84,6 +84,12 @@ build CMakeFiles/filter_names.dir/Musician.cpp.o: CXX_COMPILER__filter_names_Deb
   OBJECT_DIR = CMakeFiles/filter_names.dir
   OBJECT_FILE_DIR = CMakeFiles/filter_names.dir
 
+build CMakeFiles/filter_names.dir/DataFilter.cpp.o: CXX_COMPILER__filter_names_Debug /home/n/CLionProjects/filter_names/DataFilter.cpp || cmake_object_order_depends_target_filter_names
+  DEP_FILE = CMakeFiles/filter_names.dir/DataFilter.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/filter_names.dir
+  OBJECT_FILE_DIR = CMakeFiles/filter_names.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target filter_names
@@ -92,7 +98,7 @@ build CMakeFiles/filter_names.dir/Musician.cpp.o: CXX_COMPILER__filter_names_Deb
 #############################################
 # Link the executable filter_names
 
-build filter_names: CXX_EXECUTABLE_LINKER__filter_names_Debug CMakeFiles/filter_names.dir/main.cpp.o CMakeFiles/filter_names.dir/Musician.cpp.o
+build filter_names: CXX_EXECUTABLE_LINKER__filter_names_Debug CMakeFiles/filter_names.dir/main.cpp.o CMakeFiles/filter_names.dir/Musician.cpp.o CMakeFiles/filter_names.dir/DataFilter.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/filter_names.dir
   POST_BUILD = :

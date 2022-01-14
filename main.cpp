@@ -3,6 +3,8 @@
 #include <sstream>
 #include <vector>
 
+#include "DataFilter.h"
+
 int main() {
     const char LINE_DELIM{'\n'};
     const std::streamsize MAX_LINE_SIZE{std::numeric_limits<std::streamsize>::max()};
@@ -11,28 +13,14 @@ int main() {
     const std::string DELIM_AFTER{"Civil War (Union)"};
     const std::string INPUT_FILE{"./input_converted_file.txt"};
 
-    std::ifstream infile(INPUT_FILE);
-
-    if (!infile.is_open()) {
-        std::cout << "Failed to open file." << std::endl;
-        return 1;
-    } else {
-        std::cout << "Successfully opened file " << INPUT_FILE << std::endl;
-    }
-
-    std::vector<std::string> names{};
-    int names_count {0};
-    for (std::string line{}, delim{}; std::getline(infile, line), std::getline(infile, delim);) {
-        if (DELIM_AFTER == delim) {
-            names.push_back(line);
-            ++names_count;
-        }
-    }
+    DataFilter df(INPUT_FILE, DELIM_AFTER);
+    std::vector<std::string> names = df.filter_by_delimiter();
 
     for (auto name : names) {
         std::cout << name << std::endl;
     }
 
+    std::cout << std::endl;
     std::cout << "Entries count: " << names.size() << std::endl;
 
     return 0;

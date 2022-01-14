@@ -3,4 +3,4 @@ project(filter_names)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(filter_names main.cpp Musician.cpp Musician.h)
+add_executable(filter_names main.cpp Musician.cpp Musician.h DataFilter.cpp DataFilter.h)
