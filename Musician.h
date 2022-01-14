@@ -12,10 +12,10 @@
 class Musician {
 private:
     // TODO replace with regex
-    const std::string ELEMENTS_SEP {" "};
-    const std::string LAST_NAME_INDICATOR {","};
+    const char ELEMENTS_SEP {' '};
+    const char LAST_NAME_INDICATOR {','};
     const std::string MIDDLE_NAME_INDICATOR {". "};
-    const std::string INITIALS_INDICATOR {"."};
+    const char INITIALS_INDICATOR {'.'};
 
     const std::string MISSING_DATA_PLACEHOLDER {"TOCHECK_EMPTY"};
     std::string first_name_;

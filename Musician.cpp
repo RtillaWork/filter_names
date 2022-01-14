@@ -14,14 +14,52 @@ Musician::Musician(const std::string &firstName, const std::string &middleName, 
         : first_name_(firstName), middle_name_(middleName), last_name_(lastName) {}
 
 
-
 Musician::Musician(const std::string &datum) {
-    std::stringstream fn{}, mn{}, ln{};
+    std::string fn{MISSING_DATA_PLACEHOLDER},
+            mn{},
+            ln{MISSING_DATA_PLACEHOLDER};
+    std::string::size_type beg_pos{0};
+    std::string::size_type end_pos{0};
+
+    // Case of empty string
+    if (datum.empty()) {
+        Musician(fn, mn, ln);
+    }
+
+    // Case of ELEMENTS_SEP-free string: assume then it is just last_name
+    if ((end_pos = datum.find_first_of(ELEMENTS_SEP)) == std::string::npos) {
+        ln = datum;
+        Musician(fn, mn, ln);
+    }
+
+    // Case string is LASTNAME, [i.n.i.t.i.a.l.s.] FIRSTNAME
+    if ((end_pos = datum.find_first_of(LAST_NAME_INDICATOR)) != std::string::npos) {
+        ln = datum.substr(beg_pos, end_pos);
+        beg_pos = end_pos + 1;
+
+        if ((end_pos = datum.find_first_of(ELEMENTS_SEP)) != std::string::npos) {
+            mn = datum.substr(beg_pos, end_pos);
+            fn = datum.substr(end_pos + 1, datum.size());
 
 
+        } else {
+            fn = datum.substr(end_pos + 1, datum.size());
+        }
+        Musician(fn, mn, ln);
 
+    } // if
 
-}
+    // Case string is FIRSTNAME LASTNAME
+    if ((end_pos = datum.find_first_of(ELEMENTS_SEP)) != std::string::npos) {
+        fn = datum.substr(beg_pos, end_pos);
+        beg_pos = end_pos + 1;
+
+        if ((end_pos = datum.find_first_of(ELEMENTS_SEP)) == std::string::npos) {
+            ln = datum.substr(beg_pos, datum.size());
+        }
+        Musician(fn, mn, ln);
+    } // if
+} // Musician::Musician(...)
 
 bool Musician::operator==(const Musician &rhs) const {
     return first_name_ == rhs.first_name_ &&
