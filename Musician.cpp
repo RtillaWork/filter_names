@@ -2,16 +2,26 @@
 // Created by n on 2022-01-14.
 //
 
+#include <sstream>
 #include "Musician.h"
 
 Musician::Musician() {}
-
 
 Musician::Musician(const std::string &firstName, const std::string &lastName) : first_name_(firstName), middle_name_(),
                                                                                 last_name_(lastName) {}
 
 Musician::Musician(const std::string &firstName, const std::string &middleName, const std::string &lastName)
         : first_name_(firstName), middle_name_(middleName), last_name_(lastName) {}
+
+
+
+Musician::Musician(const std::string &datum) {
+    std::stringstream fn{}, mn{}, ln{};
+
+
+
+
+}
 
 bool Musician::operator==(const Musician &rhs) const {
     return first_name_ == rhs.first_name_ &&

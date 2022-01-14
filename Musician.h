@@ -11,6 +11,13 @@
 
 class Musician {
 private:
+    // TODO replace with regex
+    const std::string ELEMENTS_SEP {" "};
+    const std::string LAST_NAME_INDICATOR {","};
+    const std::string MIDDLE_NAME_INDICATOR {". "};
+    const std::string INITIALS_INDICATOR {"."};
+
+    const std::string MISSING_DATA_PLACEHOLDER {"TOCHECK_EMPTY"};
     std::string first_name_;
     std::string middle_name_;
     std::string last_name_;
@@ -18,9 +25,11 @@ private:
 public:
     Musician();
 
+    Musician(const std::string &firstName, const std::string &lastName);
+
     Musician(const std::string &firstName, const std::string &middleName, const std::string &lastName);
 
-    Musician(const std::string &firstName, const std::string &lastName);
+    Musician(const std::string &datum);
 
     bool operator==(const Musician &rhs) const;
 
