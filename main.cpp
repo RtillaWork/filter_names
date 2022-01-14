@@ -22,9 +22,9 @@ int main() {
 
     std::vector<std::string> names{};
     int names_count {0};
-    for (std::string line1{}, line2{}; std::getline(infile, line1), std::getline(infile, line2);) {
-        if (DELIM_AFTER == line2) {
-            names.push_back(line1);
+    for (std::string line{}, delim{}; std::getline(infile, line), std::getline(infile, delim);) {
+        if (DELIM_AFTER == delim) {
+            names.push_back(line);
             ++names_count;
         }
     }
